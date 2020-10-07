@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta title="Exercise 1 - Stopwatch" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="application/javascript" src="./stopwatch.js"></script>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Stopwatch</h1>
+      <h3 class="timer" id="timerText"></h3>
+
+      <ul class="laps" id="lapsList"></ul>
+
+      <div class="actions">
+        <button id="reset">RESET</button>
+        <button id="stop">STOP</button>
+        <button id="start">START</button>
+        <button id="addlap">LAP</button>
+      </div>
+    </div>
+
+    <script type="application/javascript">
+      stopwatch.init(
+        "timerText",
+        "lapsList",
+        "start",
+        "stop",
+        "reset",
+        "addlap"
+      );
+    </script>
+  </body>
+</html>
