@@ -1,4 +1,4 @@
-var stopwatch = {
+const stopwatch = {
   seconds: 0,
   laps: [],
   timerInterval: null,
@@ -67,7 +67,7 @@ var stopwatch = {
    * Start/Resume Stopwatch
    */
   start() {
-    var self = this;
+    const self = this;
 
     if (!self.running) {
       self.running = true;
@@ -129,9 +129,9 @@ var stopwatch = {
    * @param {Number} seccondsCount
    */
   seccondsToTime(seccondsCount) {
-    var min = Math.floor((seccondsCount % (60 * 60 * 24)) / (60 * 60 * 100));
-    var sec = Math.floor((seccondsCount % (60 * 60)) / 100);
-    var cent = Math.floor(seccondsCount % 100);
+    const min = Math.floor((seccondsCount % (60 * 60 * 24)) / (60 * 60 * 100));
+    const sec = Math.floor((seccondsCount % (60 * 60)) / 100);
+    const cent = Math.floor(seccondsCount % 100);
 
     return `${min}:${this.pad(sec)}:${this.pad(cent)}`;
   },
@@ -140,7 +140,7 @@ var stopwatch = {
    * @param {Number} num
    */
   pad(num) {
-    var s = "00" + num;
+    const s = "00" + num;
     return s.substr(s.length - 2);
   },
 };
