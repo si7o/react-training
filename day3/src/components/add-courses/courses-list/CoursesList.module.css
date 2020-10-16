@@ -1,0 +1,16 @@
+ul {
+  text-align: left;
+  border: 1px solid #5287ed;
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+}
+
+ul li {
+  list-style: none;
+  padding: 3px 20px;
+}
+
+ul li:nth-child(odd) {
+  background-color: #fafafa;
+}
