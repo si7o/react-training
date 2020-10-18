@@ -4,12 +4,19 @@
   border-radius: 4px;
   overflow: hidden;
   position: relative;
+  margin-bottom: 10px;
+}
+
+.input:focus {
+  box-shadow: 0 0 5px #099fcc;
+  outline: none;
 }
 
 .selectedItems {
   padding: 5px 5px;
   height: 24px;
   position: relative;
+  user-select: none;
 }
 
 .toggleDropdown {

@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import styles from "./Chip.module.css";
 
 const Chip = ({ label, onRemove }) => {
-  const handleChipRemove = () => {
+  const handleChipRemove = (event) => {
     onRemove(label);
+    event.stopPropagation();
   };
 
   return (

@@ -6,65 +6,94 @@ import Chip from "./chip/Chip";
 import SelectOptions from "./select-options/SelectOptions";
 import toggle from "./chevron-down.svg";
 
-const Select = ({ name, label }) => {
-  const [selectedOptions, setSelectedOptions] = useState([]);
+const Select = ({ name, label, options, value, onChange, multiple }) => {
   const [showOptions, setShowOptions] = useState(false);
 
   const handleRemoveOption = (optionLabel) => {
-    setSelectedOptions(
-      selectedOptions.filter((opt) => opt.label !== optionLabel)
-    );
+    onChange(value.filter((opt) => opt.label !== optionLabel));
   };
 
-  const handleSelectOption = (option) => {
-    if (
-      selectedOptions.filter((opt) => opt.label === option.label).length > 0
-    ) {
-      setSelectedOptions(
-        selectedOptions.filter((opt) => opt.label !== option.label)
-      );
-    } else {
-      setSelectedOptions([...selectedOptions, option]);
-    }
-
+  const handleBlur = () => {
     setShowOptions(false);
   };
 
-  const handleSelectedItemsClick = (event) => {
+  const handleMultipleSelectOption = (option) => {
+    if (value.filter((opt) => opt.label === option.label).length > 0) {
+      onChange(value.filter((opt) => opt.label !== option.label));
+    } else {
+      onChange([...value, option]);
+    }
+  };
+
+  const handleSingleSelectOption = (option) => {
+    if (value.label === option.label) {
+      onChange("");
+    } else {
+      onChange(option);
+    }
+    setShowOptions(false);
+  };
+
+  const handleSelectedItemsClick = () => {
     setShowOptions(!showOptions);
   };
 
-  const selectedChips = selectedOptions.map((opt) => (
-    <Chip key={opt.label} label={opt.label} onRemove={handleRemoveOption} />
-  ));
+  const handleDropdownButtonClick = () => {
+    setShowOptions(!showOptions);
+  };
+
+  const selectedValue = multiple
+    ? value.map((opt) => (
+        <Chip key={opt.label} label={opt.label} onRemove={handleRemoveOption} />
+      ))
+    : value.label;
+
+  const handleKeyUp = (event) => {
+    switch (event.key) {
+      case "Enter":
+        setShowOptions(!showOptions);
+        break;
+      case "Escape":
+        setShowOptions(false);
+        break;
+      case "Backspace":
+        onChange(value.splice(-1, 1));
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <div>
       <label htmlFor={name}>{label}</label>
-      <div className={styles.input} id={name}>
-        <div className={styles.selectedItems}>
-          {selectedChips}
+      <div
+        className={styles.input}
+        id={name}
+        tabIndex={0}
+        onKeyUp={handleKeyUp}
+        onBlur={handleBlur}
+      >
+        <div
+          className={styles.selectedItems}
+          onClick={handleSelectedItemsClick}
+        >
+          {selectedValue}
           <img
             src={toggle}
             className={styles.toggleDropdown}
-            onClick={handleSelectedItemsClick}
+            onClick={handleDropdownButtonClick}
             data-open={showOptions}
             alt="toggle dropdown"
           />
         </div>
         {showOptions && (
           <SelectOptions
-            options={[
-              { label: "option 1", value: 1 },
-              { label: "option 2", value: 2 },
-              { label: "option 3", value: 3 },
-              { label: "option 4", value: 4 },
-              { label: "option 5", value: 5 },
-              { label: "option 6", value: 6 },
-              { label: "option 7", value: 7 },
-            ]}
-            selectedOptions={selectedOptions}
-            onSelect={handleSelectOption}
+            options={options}
+            selectedOptions={multiple ? value : [{ ...value }]}
+            onSelect={
+              multiple ? handleMultipleSelectOption : handleSingleSelectOption
+            }
           />
         )}
       </div>
@@ -75,6 +104,14 @@ const Select = ({ name, label }) => {
 Select.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({ label: PropTypes.string, value: PropTypes.any })
+  ).isRequired,
+  value: PropTypes.any.isRequired,
+  onChange: PropTypes.func.isRequired,
+  multiple: PropTypes.bool,
 };
+
+Select.defaultProps = { multiple: false };
 
 export default Select;
