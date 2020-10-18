@@ -14,4 +14,5 @@
 
 .option[data-selected="true"] {
   background-color: #dcf0ff;
+  font-weight: 600;
 }
