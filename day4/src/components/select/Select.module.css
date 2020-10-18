@@ -1,10 +1,14 @@
 .input {
   min-width: 250px;
-  border: 1px solid #5a5a5a;
+  border: 1px solid #adadad;
   border-radius: 4px;
   overflow: hidden;
   position: relative;
   margin-bottom: 10px;
+}
+
+.input:hover {
+  border-color: black;
 }
 
 .input:focus {
