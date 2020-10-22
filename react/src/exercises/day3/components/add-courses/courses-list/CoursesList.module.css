@@ -1,4 +1,4 @@
-ul {
+.list {
   text-align: left;
   border: 1px solid #5287ed;
   border-radius: 8px;
@@ -6,11 +6,11 @@ ul {
   overflow: hidden;
 }
 
-ul li {
+.listItem {
   list-style: none;
   padding: 3px 20px;
 }
 
-ul li:nth-child(odd) {
+.listItem:nth-child(odd) {
   background-color: #fafafa;
 }

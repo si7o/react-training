@@ -35,12 +35,18 @@ export const AddCourses = () => {
           onChange={handleInputChange}
           value={courseName}
         />
-        <input type="submit" value="Add Course" disabled={addCourseDisabled} />
+        <input
+          type="submit"
+          className={styles.button}
+          value="Add Course"
+          disabled={addCourseDisabled}
+        />
         <button
           type="button"
           value="reset"
           onClick={handleResetClick}
           disabled={resetDisabled}
+          className={styles.button}
         >
           Reset
         </button>

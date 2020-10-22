@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./App.css";
 import { Select } from "./components";
 
 const selectOptions = [
@@ -12,7 +11,7 @@ const selectOptions = [
   { label: "option 7", value: 7 },
 ];
 
-function App() {
+function Day4() {
   const [valueSingle, setValueSingle] = useState("");
   const [valueMultiple, setValueMultiple] = useState([]);
 
@@ -25,7 +24,7 @@ function App() {
   };
 
   return (
-    <div className="day4">
+    <div>
       <Select
         name="selectSingle"
         label="Select Single"
@@ -41,8 +40,9 @@ function App() {
         multiple
         onChange={handleMultipleSelectChange}
       />
+      <pre>{JSON.stringify({ valueSingle, valueMultiple }, null, 2)}</pre>
     </div>
   );
 }
 
-export default App;
+export default Day4;

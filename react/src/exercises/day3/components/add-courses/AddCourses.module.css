@@ -9,8 +9,7 @@ input[type="text"] {
   border: 2px solid #767676;
 }
 
-input[type="submit"],
-button {
+.button {
   border: none;
   background-color: #6c99ec;
   padding: 10px 15px;
@@ -22,13 +21,11 @@ button {
   transition: all 0.2s ease-in;
 }
 
-input[type="submit"]:hover,
-button:hover {
+.button:hover {
   background-color: #5287ed;
 }
 
-input[type="submit"]:disabled,
-button:disabled {
+.button:disabled {
   opacity: 0.3;
 }
 
