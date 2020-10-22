@@ -4,10 +4,9 @@ body {
 
 .countryCards {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  float: left;
 }
 
 .filters {
@@ -15,10 +14,33 @@ body {
   justify-content: space-between;
 }
 
-.input,
-.select {
+.input {
   width: 300px;
   padding: 10px 15px;
   border-radius: 8px;
   border: 2px solid #767676;
+}
+
+.select {
+  width: 150px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 2px solid #767676;
+}
+
+.selectItems {
+  margin-left: 10px;
+  width: 50px;
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid #767676;
+}
+
+.select option,
+.selectItems option {
+  font-size: 18px;
+}
+
+.loading {
+  font-size: 16px;
 }

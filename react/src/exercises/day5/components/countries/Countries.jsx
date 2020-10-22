@@ -8,15 +8,26 @@ const Countries = () => {
   const [countries, setCountries] = useState([]);
   const [countryName, setCountryName] = useState("");
   const [countryRegion, setCountryRegion] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [itemsToDisplay, setItemsToDisplay] = useState(30);
 
   useEffect(() => {
-    getAllCountries().then((data) => {
-      setCountries(data);
-    });
+    setIsLoading(true);
+    getAllCountries()
+      .then((data) => {
+        setCountries(data);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   const handleCountryNameChange = (event) => {
     setCountryName(event.target.value);
+  };
+
+  const handleItemsToDisplayChange = (event) => {
+    setItemsToDisplay(event.target.value);
   };
 
   const handleCountryRegionChange = (event) => {
@@ -31,9 +42,18 @@ const Countries = () => {
   });
 
   const CountryCards = () => {
-    return filteredCountries.map((country) => (
-      <CountryCard key={country.alpha2Code} country={country} />
-    ));
+    if (isLoading) {
+      return <div className="loading">Loading...</div>;
+    }
+    if (filteredCountries.length === 0) {
+      return <div>No countries found. Try another search filters</div>;
+    }
+
+    return filteredCountries
+      .slice(0, itemsToDisplay)
+      .map((country) => (
+        <CountryCard key={country.alpha2Code} country={country} />
+      ));
   };
 
   return (
@@ -44,21 +64,36 @@ const Countries = () => {
           type="text"
           name="countryName"
           id="countryName"
-          placeholder="Search for a country"
+          placeholder="&#x1F50D; Search for a country"
           onChange={handleCountryNameChange}
         />
-        <select
-          className={styles.select}
-          value={countryRegion}
-          onChange={handleCountryRegionChange}
-        >
-          <option value="">Select a region</option>
-          <option value="Africa">Africa</option>
-          <option value="Americas">Americas</option>
-          <option value="Asia">Asia</option>
-          <option value="Europe">Europe</option>
-          <option value="Oceania">Oceania</option>
-        </select>
+        <div>
+          <select
+            className={styles.select}
+            value={countryRegion}
+            onChange={handleCountryRegionChange}
+          >
+            <option value="">Filter by region</option>
+            <option value="Africa">Africa</option>
+            <option value="Americas">Americas</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+          </select>
+          <select
+            className={styles.selectItems}
+            value={itemsToDisplay}
+            onChange={handleItemsToDisplayChange}
+          >
+            <option value="" disabled>
+              Countries to display
+            </option>
+            <option value={10}>10</option>
+            <option value={30}>30</option>
+            <option value={50}>50</option>
+            <option value={countries.length}>All ({countries.length})</option>
+          </select>
+        </div>
       </div>
       <div className={styles.countryCards}>
         <CountryCards />

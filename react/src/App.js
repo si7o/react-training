@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from "react-router-dom";
 
 import "./App.css";
 import { Day3, Day4, Day4Class } from "./exercises";
@@ -10,16 +15,24 @@ function App() {
     <Router>
       <ul className="App">
         <li>
-          <Link to="/day3-homework">day 3 homework</Link>
+          <NavLink to="/day3-homework" activeClassName="current-page">
+            day 3 homework
+          </NavLink>
         </li>
         <li>
-          <Link to="/day4-class">day 4 in class</Link>
+          <NavLink to="/day4-class" activeClassName="current-page">
+            day 4 in class
+          </NavLink>
         </li>
         <li>
-          <Link to="/day4-homework">day 4 homework</Link>
+          <NavLink to="/day4-homework" activeClassName="current-page">
+            day 4 homework
+          </NavLink>
         </li>
         <li>
-          <Link to="/day5-homework">day 5 homework</Link>
+          <NavLink to="/day5-homework" activeClassName="current-page">
+            day 5 homework
+          </NavLink>
         </li>
       </ul>
       <div className="container">

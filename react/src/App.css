@@ -6,6 +6,18 @@
   padding: 0 200px;
   display: flex;
 }
+a,
+a:visited {
+  color: #114c88;
+}
+
+a:hover {
+  color: #2a82da;
+}
+
+.current-page {
+  font-weight: bold;
+}
 
 @keyframes App-logo-spin {
   from {
