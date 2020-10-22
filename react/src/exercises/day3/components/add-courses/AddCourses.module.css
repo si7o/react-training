@@ -2,7 +2,7 @@ h1 {
   color: #5287ed;
 }
 
-input[type="text"] {
+.input {
   width: 300px;
   padding: 10px 15px;
   border-radius: 8px;
@@ -19,6 +19,8 @@ input[type="text"] {
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease-in;
+  height: auto;
+  width: auto;
 }
 
 .button:hover {

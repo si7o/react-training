@@ -34,6 +34,7 @@ export const AddCourses = () => {
           placeholder="Please insert course name"
           onChange={handleInputChange}
           value={courseName}
+          className={styles.input}
         />
         <input
           type="submit"

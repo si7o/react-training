@@ -11,9 +11,7 @@ const Chip = ({ label, onRemove }) => {
   return (
     <span className={styles.chip}>
       {label}
-      <button className={styles.chipButton} onClick={handleChipRemove}>
-        &times;
-      </button>
+      <button onClick={handleChipRemove}>&times;</button>
     </span>
   );
 };

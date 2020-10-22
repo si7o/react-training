@@ -7,7 +7,7 @@
   margin-right: 2px;
 }
 
-.chipButton {
+button {
   margin-left: 5px;
   border: none;
   border-radius: 100%;
@@ -20,6 +20,6 @@
   color: #fff;
 }
 
-.chipButton:hover {
+button:hover {
   background-color: rgb(77, 184, 255);
 }

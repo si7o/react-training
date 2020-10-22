@@ -1,0 +1,44 @@
+.input {
+  min-width: 250px;
+  border: 1px solid #adadad;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.input:hover {
+  border-color: black;
+}
+
+.input:focus {
+  box-shadow: 0 0 5px #099fcc;
+  outline: none;
+}
+
+.selectedItems {
+  padding: 5px 5px;
+  height: 24px;
+  position: relative;
+  user-select: none;
+}
+
+.toggleDropdown {
+  width: 15px;
+  height: 15px;
+  position: relative;
+  height: 100%;
+  float: right;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  user-select: none;
+}
+
+.toggleDropdown[data-open="true"] {
+  transform: rotate(180deg);
+}
+
+.toggleDropdown:hover {
+  opacity: 0.7;
+}
