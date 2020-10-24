@@ -13,9 +13,8 @@ const loginFormReducer = (state, action) => {
         ...state,
         [action.payload.inputName]: action.payload.inputValue,
       };
-      break;
     case RESET:
-      break;
+      return action.payload;
     default:
       return state;
   }

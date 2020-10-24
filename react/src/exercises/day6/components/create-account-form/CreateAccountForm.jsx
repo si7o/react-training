@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from "react";
-import { loginFormReducer, SET_VALUE } from "./reducer";
+import { loginFormReducer, RESET, SET_VALUE } from "./reducer";
 import Input from "../input/Input";
 import Checkbox from "../checkbox/Checkbox";
 import Select from "../select/Select";
@@ -11,7 +11,7 @@ const initialLoginFormState = {
   email: "",
   password: "",
   countryCode: "",
-  userAgreement: "",
+  userAgreement: false,
 };
 
 const validationRules = {
@@ -51,6 +51,18 @@ const CreateAccountForm = () => {
     setErrors({ ...errors, [name]: errorMessage });
   };
 
+  const validateForm = () => {
+    const errs = Object.keys(formData).reduce((acc, name) => {
+      const rule = validationRules[name] ?? "";
+      const value = formData[name];
+      const errorMessage = validate(rule, value);
+      return { ...acc, [name]: errorMessage };
+    }, {});
+    setErrors(errs);
+
+    return errs;
+  };
+
   const handleFieldChange = (event) => {
     const inputName = event.target.name;
     const inputValue =
@@ -68,21 +80,15 @@ const CreateAccountForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    const errs = Object.keys(formData).reduce((acc, name) => {
-      const rule = validationRules[name] ?? "";
-      const value = formData[name];
-      const errorMessage = validate(rule, value);
-      return { ...acc, [name]: errorMessage };
-    }, {});
-    setErrors(errs);
-
+    const errs = validateForm();
     const hasErrors = Object.entries(errs).some(([key, value]) => !!value);
     if (hasErrors) {
       return;
     }
 
     window.alert(JSON.stringify(formData, null, 2));
+
+    setFormData({ type: RESET, payload: initialLoginFormState });
   };
 
   return (
@@ -151,7 +157,5 @@ const CreateAccountForm = () => {
     </div>
   );
 };
-
-CreateAccountForm.propTypes = {};
 
 export default CreateAccountForm;
