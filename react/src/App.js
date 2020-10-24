@@ -7,8 +7,7 @@ import {
 } from "react-router-dom";
 
 import "./App.css";
-import { Day3, Day4, Day4Class } from "./exercises";
-import Day5 from "./exercises/day5/Day5";
+import { Day3, Day4, Day4Class, Day5 } from "./exercises";
 
 function App() {
   return (
