@@ -1,0 +1,32 @@
+.input {
+  height: 75px;
+  display: block;
+  color: #212121;
+}
+
+.input label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.input input {
+  margin-top: 4px;
+  width: 100%;
+  border: 1px solid #dddddd;
+  line-height: 30px;
+  text-indent: 5px;
+  border-radius: 4px;
+}
+
+.input input:hover,
+.input input:focus {
+  border-color: #313131;
+  outline: none;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 12px;
+  padding: 0 4px;
+}

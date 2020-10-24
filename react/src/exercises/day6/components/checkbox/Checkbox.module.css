@@ -1,0 +1,12 @@
+.checkbox {
+  display: block;
+  color: #212121;
+}
+
+.checkbox label {
+  font-size: 14px;
+}
+
+.errorMessage {
+  color: red;
+}

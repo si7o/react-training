@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import "./App.css";
-import { Day3, Day4, Day4Class, Day5 } from "./exercises";
+import { Day3, Day4, Day4Class, Day5, Day6 } from "./exercises";
 
 function App() {
   return (
@@ -33,6 +33,11 @@ function App() {
             day 5 homework
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/day6-homework" activeClassName="current-page">
+            day 6 homework
+          </NavLink>
+        </li>
       </ul>
       <div className="container">
         <Switch>
@@ -40,6 +45,7 @@ function App() {
           <Route path="/day4-class" component={Day4Class} exact />
           <Route path="/day4-homework" component={Day4} exact />
           <Route path="/day5-homework" component={Day5} exact />
+          <Route path="/day6-homework" component={Day6} exact />
         </Switch>
       </div>
     </Router>
