@@ -11,7 +11,7 @@ const selectOptions = [
   { label: "option 7", value: 7 },
 ];
 
-function Day4() {
+const Day4 = () => {
   const [valueSingle, setValueSingle] = useState("");
   const [valueMultiple, setValueMultiple] = useState([]);
 
@@ -44,6 +44,6 @@ function Day4() {
       <pre>{JSON.stringify({ valueSingle, valueMultiple }, null, 2)}</pre>
     </div>
   );
-}
+};
 
 export default Day4;
