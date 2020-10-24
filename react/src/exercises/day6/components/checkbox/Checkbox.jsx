@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Checkbox.module.css";
 
-const Checkbox = ({ name, label, value, onChange, errorMessage }) => {
+const Checkbox = ({ name, label, checked, onChange, errorMessage }) => {
   const handleChange = (event) => {
     onChange(event);
   };
@@ -14,7 +14,7 @@ const Checkbox = ({ name, label, value, onChange, errorMessage }) => {
           type="checkbox"
           name={name}
           id={name}
-          checked={value}
+          checked={checked}
           onChange={handleChange}
         />
         {label}
@@ -23,6 +23,17 @@ const Checkbox = ({ name, label, value, onChange, errorMessage }) => {
   );
 };
 
-Checkbox.propTypes = {};
+Checkbox.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  checked: PropTypes.any,
+  onChange: PropTypes.func,
+  errorMessage: PropTypes.any,
+};
+
+Checkbox.defaultProps = {
+  onChange: () => {},
+  errorMessage: "",
+};
 
 export default Checkbox;

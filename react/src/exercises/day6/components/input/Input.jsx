@@ -22,6 +22,19 @@ const Input = ({ name, label, type, value, onChange, errorMessage }) => {
   );
 };
 
-Input.propTypes = {};
+Input.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(["text", "number", "password"]),
+  value: PropTypes.any,
+  onChange: PropTypes.func,
+  errorMessage: PropTypes.any,
+};
+
+Input.defaultProps = {
+  type: "text",
+  onChange: () => {},
+  errorMessage: "",
+};
 
 export default Input;

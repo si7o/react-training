@@ -33,6 +33,21 @@ const Select = ({ name, label, options, value, onChange, errorMessage }) => {
   );
 };
 
-Select.propTypes = {};
+Select.propTypes = {
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({ value: PropTypes.any, label: PropTypes.string })
+  ),
+  value: PropTypes.any,
+  onChange: PropTypes.func,
+  errorMessage: PropTypes.any,
+};
+
+Select.defaultProps = {
+  options: [],
+  onChange: () => {},
+  errorMessage: "",
+};
 
 export default Select;
