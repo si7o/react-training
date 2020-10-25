@@ -24,9 +24,3 @@
   border-color: #313131;
   outline: none;
 }
-
-.errorMessage {
-  color: red;
-  font-size: 12px;
-  padding: 0 4px;
-}

@@ -31,7 +31,7 @@ const validate = (rule, value) => {
       // TODO
       return !value && "This field is not an Email.";
     case "isChecked":
-      return !value && "This field needs to be selected.";
+      return !value && "This field needs to be checked.";
     default:
       return "";
   }

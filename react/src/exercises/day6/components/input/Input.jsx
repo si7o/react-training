@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Input.module.css";
+import ErrorMessage from "../error-message/ErrorMessage";
 
 const Input = ({ name, label, type, value, onChange, errorMessage }) => {
   const handleChange = (event) => {
@@ -16,8 +17,9 @@ const Input = ({ name, label, type, value, onChange, errorMessage }) => {
         id={name}
         value={value}
         onChange={handleChange}
+        aria-invalid={!!errorMessage}
       />
-      <div className={styles.errorMessage}>{errorMessage}</div>
+      <ErrorMessage message={errorMessage} />
     </div>
   );
 };

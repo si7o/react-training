@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Select.module.css";
+import ErrorMessage from "../error-message/ErrorMessage";
 
 const Select = ({ name, label, options, value, onChange, errorMessage }) => {
   const handleChange = (event) => {
@@ -22,12 +23,18 @@ const Select = ({ name, label, options, value, onChange, errorMessage }) => {
     <div>
       <div className={styles.select}>
         <label htmlFor={name}>{label}</label>
-        <select name={name} id={name} value={value} onChange={handleChange}>
+        <select
+          name={name}
+          id={name}
+          value={value}
+          onChange={handleChange}
+          aria-invalid={!!errorMessage}
+        >
           {placeHolder}
           {optionItems}
         </select>
 
-        <div className={styles.errorMessage}>{errorMessage}</div>
+        <ErrorMessage message={errorMessage} />
       </div>
     </div>
   );

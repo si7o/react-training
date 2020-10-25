@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Checkbox.module.css";
+import ErrorMessage from "../error-message/ErrorMessage";
 
 const Checkbox = ({ name, label, checked, onChange, errorMessage }) => {
   const handleChange = (event) => {
@@ -9,7 +10,7 @@ const Checkbox = ({ name, label, checked, onChange, errorMessage }) => {
 
   return (
     <div className={styles.checkbox}>
-      <label className={!!errorMessage ? styles.errorMessage : ""}>
+      <label className={!!errorMessage ? styles.error : ""}>
         <input
           type="checkbox"
           name={name}
@@ -19,6 +20,7 @@ const Checkbox = ({ name, label, checked, onChange, errorMessage }) => {
         />
         {label}
       </label>
+      <ErrorMessage message={errorMessage} />
     </div>
   );
 };
