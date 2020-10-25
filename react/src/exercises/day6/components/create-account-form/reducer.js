@@ -6,7 +6,7 @@ const RESET = "RESET";
  * @param {Object} state
  * @param {Object} action { type: ACTION_TYPE, payload: {*} }
  */
-const loginFormReducer = (state, action) => {
+const createAccountFormReducer = (state, action) => {
   switch (action.type) {
     case SET_VALUE:
       return {
@@ -20,4 +20,4 @@ const loginFormReducer = (state, action) => {
   }
 };
 
-export { loginFormReducer, SET_VALUE, RESET };
+export { createAccountFormReducer, SET_VALUE, RESET };

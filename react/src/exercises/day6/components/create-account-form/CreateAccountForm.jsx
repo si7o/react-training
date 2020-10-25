@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from "react";
-import { loginFormReducer, RESET, SET_VALUE } from "./reducer";
+import { createAccountFormReducer, RESET, SET_VALUE } from "./reducer";
 import Input from "../input/Input";
 import Checkbox from "../checkbox/Checkbox";
 import Select from "../select/Select";
@@ -39,7 +39,7 @@ const validate = (rule, value) => {
 
 const CreateAccountForm = () => {
   const [formData, setFormData] = useReducer(
-    loginFormReducer,
+    createAccountFormReducer,
     initialLoginFormState
   );
   const [errors, setErrors] = useState({});
