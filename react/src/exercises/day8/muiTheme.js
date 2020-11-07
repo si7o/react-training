@@ -45,9 +45,6 @@ const theme = createMuiTheme({
       gutters: {
         paddingLeft: 32,
       },
-      selected: {
-        borderLeft: "3px solid #ffffff",
-      },
     },
   },
 });
