@@ -11,7 +11,10 @@ const createAccountFormReducer = (state, action) => {
     case SET_VALUE:
       return {
         ...state,
-        [action.payload.inputName]: action.payload.inputValue,
+        [action.payload.inputName]: {
+          value: action.payload.inputValue,
+          touched: true,
+        },
       };
     case RESET:
       return action.payload;

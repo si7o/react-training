@@ -1,9 +1,10 @@
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { createAccountFormReducer, RESET, SET_VALUE } from "./reducer";
 import Input from "../input/Input";
 import Checkbox from "../checkbox/Checkbox";
 import Select from "../select/Select";
 import styles from "./CreateAccountForm.module.css";
+import { useForm } from "./sideEffects";
 
 const initialLoginFormState = {
   name: "",
@@ -38,8 +39,7 @@ const validate = (rule, value) => {
 };
 
 const CreateAccountForm = () => {
-  const [formData, setFormData] = useReducer(
-    createAccountFormReducer,
+  const { formState, setValue, getFormData, reset } = useForm(
     initialLoginFormState
   );
   const [errors, setErrors] = useState({});
@@ -52,9 +52,9 @@ const CreateAccountForm = () => {
   };
 
   const validateForm = () => {
-    const errs = Object.keys(formData).reduce((acc, name) => {
+    const errs = Object.keys(formState).reduce((acc, name) => {
       const rule = validationRules[name] ?? "";
-      const value = formData[name];
+      const value = formState[name].value;
       const errorMessage = validate(rule, value);
       return { ...acc, [name]: errorMessage };
     }, {});
@@ -72,10 +72,7 @@ const CreateAccountForm = () => {
 
     validateInput(inputName, inputValue);
 
-    setFormData({
-      type: SET_VALUE,
-      payload: { inputName, inputValue },
-    });
+    setValue(inputName, inputValue);
   };
 
   const handleSubmit = (event) => {
@@ -86,9 +83,9 @@ const CreateAccountForm = () => {
       return;
     }
 
-    window.alert(JSON.stringify(formData, null, 2));
+    window.alert(JSON.stringify(getFormData(), null, 2));
 
-    setFormData({ type: RESET, payload: initialLoginFormState });
+    reset({ type: RESET, payload: initialLoginFormState });
   };
 
   return (
@@ -99,7 +96,7 @@ const CreateAccountForm = () => {
           <Input
             name="name"
             label="First name"
-            value={formData.name}
+            value={formState.name.value}
             onChange={handleFieldChange}
             errorMessage={errors.name}
           />
@@ -107,7 +104,7 @@ const CreateAccountForm = () => {
           <Input
             name="lastName"
             label="Last name"
-            value={formData.lastName}
+            value={formState.lastName.value}
             onChange={handleFieldChange}
             errorMessage={errors.lastName}
           />
@@ -115,7 +112,7 @@ const CreateAccountForm = () => {
           <Input
             name="email"
             label="Email"
-            value={formData.email}
+            value={formState.email.value}
             onChange={handleFieldChange}
             errorMessage={errors.email}
           />
@@ -124,7 +121,7 @@ const CreateAccountForm = () => {
             name="password"
             label="Password"
             type="password"
-            value={formData.password}
+            value={formState.password.value}
             onChange={handleFieldChange}
             errorMessage={errors.password}
           />
@@ -132,7 +129,7 @@ const CreateAccountForm = () => {
           <Select
             name="countryCode"
             label="Country"
-            value={formData.countryCode}
+            value={formState.countryCode.value}
             onChange={handleFieldChange}
             errorMessage={errors.countryCode}
             options={[
@@ -146,7 +143,7 @@ const CreateAccountForm = () => {
           <Checkbox
             name="userAgreement"
             label="Accept the terms of service"
-            checked={formData.userAgreement}
+            checked={formState.userAgreement.value}
             onChange={handleFieldChange}
             errorMessage={errors.userAgreement}
           />
