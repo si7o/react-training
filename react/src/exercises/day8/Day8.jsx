@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import { Grid, makeStyles, ThemeProvider } from "@material-ui/core";
@@ -12,6 +12,7 @@ import {
   Subscribers,
 } from "./pages";
 import { SessionProvider } from "./contexts";
+import { setInitialCampaigns } from "./services/campaignsService";
 
 const useStyles = makeStyles({
   container: {
@@ -25,6 +26,10 @@ const useStyles = makeStyles({
 
 const Day8 = () => {
   const classes = useStyles();
+
+  useEffect(() => {
+    setInitialCampaigns();
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
