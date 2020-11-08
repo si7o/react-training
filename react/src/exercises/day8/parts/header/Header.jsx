@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AppBar, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import HeaderLogo from "./HeaderLogo";
 import UserInfo from "./UserInfo";
 import SearchBox from "./SearchBox";
-import { useLocation } from "react-router";
+import { useLocation } from "react-router-dom";
+import { SessionContext } from "../../contexts";
 
 // styles using makeStyles & theme
 const useStyles = makeStyles((theme) => ({
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 const Header = () => {
   const classes = useStyles();
   const location = useLocation();
+  const { username, avatarUrl } = useContext(SessionContext);
 
   const title = location.state?.title || "Dashboard";
 
@@ -37,7 +39,7 @@ const Header = () => {
         {title}
       </Box>
       <SearchBox />
-      <UserInfo username="User Name" />
+      <UserInfo username={username} avatarUrl={avatarUrl} />
     </AppBar>
   );
 };

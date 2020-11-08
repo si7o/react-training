@@ -8,17 +8,24 @@ const useStyles = makeStyles({
   username: { marginLeft: 5, fontSize: 12 },
 });
 
-const UserInfo = ({ username }) => {
+const UserInfo = ({ username, avatarUrl }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      {username && <Avatar className={classes.avatar}>{username[0]}</Avatar>}
+      {username && (
+        <Avatar className={classes.avatar} alt={username} src={avatarUrl}>
+          {username[0]}
+        </Avatar>
+      )}
       <span className={classes.username}>{username}</span>
     </div>
   );
 };
 
-UserInfo.propTypes = { username: PropTypes.string.isRequired };
+UserInfo.propTypes = {
+  username: PropTypes.string.isRequired,
+  avatarUrl: PropTypes.string,
+};
 
 export default UserInfo;
