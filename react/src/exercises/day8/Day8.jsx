@@ -15,9 +15,11 @@ import { SessionProvider } from "./contexts";
 
 const useStyles = makeStyles({
   container: {
-    marginLeft: 180,
-    marginTop: 50,
+    left: 180,
+    width: "calc(100% - 183px)",
+    top: 50,
     padding: 10,
+    position: "absolute",
   },
 });
 
@@ -29,7 +31,7 @@ const Day8 = () => {
       <SessionProvider>
         <Header />
         <Sidebar />
-        <Grid container className={classes.container}>
+        <Grid container className={classes.container} spacing={2}>
           <Switch>
             <Route exact path="/day8-homework">
               <Redirect to="/day8-homework/dashboard" />

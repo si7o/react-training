@@ -1,6 +1,7 @@
 import { createMuiTheme } from "@material-ui/core";
 
 const theme = createMuiTheme({
+  spacing: 8,
   overrides: {
     MuiAppBar: {
       root: {
