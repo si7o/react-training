@@ -11,6 +11,7 @@ import {
   Settings,
   Subscribers,
 } from "./pages";
+import { SessionProvider } from "./contexts";
 
 const useStyles = makeStyles({
   container: {
@@ -25,21 +26,23 @@ const Day8 = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header />
-      <Sidebar />
-      <Grid container className={classes.container}>
-        <Switch>
-          <Route exact path="/day8-homework">
-            <Redirect to="/day8-homework/dashboard" />
-          </Route>
+      <SessionProvider>
+        <Header />
+        <Sidebar />
+        <Grid container className={classes.container}>
+          <Switch>
+            <Route exact path="/day8-homework">
+              <Redirect to="/day8-homework/dashboard" />
+            </Route>
 
-          <Route path="/day8-homework/dashboard" component={Dashboard} />
-          <Route path="/day8-homework/integration" component={Integration} />
-          <Route path="/day8-homework/new-campaign" component={NewCampaign} />
-          <Route path="/day8-homework/subscribers" component={Subscribers} />
-          <Route path="/day8-homework/settings" component={Settings} />
-        </Switch>
-      </Grid>
+            <Route path="/day8-homework/dashboard" component={Dashboard} />
+            <Route path="/day8-homework/integration" component={Integration} />
+            <Route path="/day8-homework/new-campaign" component={NewCampaign} />
+            <Route path="/day8-homework/subscribers" component={Subscribers} />
+            <Route path="/day8-homework/settings" component={Settings} />
+          </Switch>
+        </Grid>
+      </SessionProvider>
     </ThemeProvider>
   );
 };
