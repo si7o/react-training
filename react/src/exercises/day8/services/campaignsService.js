@@ -7,8 +7,8 @@ export const setInitialCampaigns = () => {
       type: "Campaign Type",
       startDate: "2020/07/02",
       endDate: "2020/09/02",
-      visitors: 345,
-      entrants: 145,
+      visitors: 7985,
+      entrants: 6424,
     },
     {
       id: 2,
@@ -18,7 +18,7 @@ export const setInitialCampaigns = () => {
       startDate: "2020/07/02",
       endDate: "2020/11/22",
       visitors: 345,
-      entrants: 145,
+      entrants: 4,
     },
     {
       id: 4,

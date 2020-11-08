@@ -6,6 +6,8 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const circleSize = 80;
 
@@ -45,7 +47,15 @@ const useStyles = makeStyles((theme) => ({
 const CircularData = (props) => {
   const { label, value, isPercentage } = props;
 
+  const [circleValue, setCircleValue] = useState(0);
+
   const classes = useStyles(props);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCircleValue(value);
+    }, 10);
+  }, []);
 
   return (
     <Box position="relative" display="inline-flex" className={classes.root}>
@@ -60,7 +70,7 @@ const CircularData = (props) => {
         <CircularProgress
           variant="static"
           className={classes.top}
-          value={value}
+          value={circleValue}
           size={circleSize}
           thickness={2}
         />
