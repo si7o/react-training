@@ -1,6 +1,6 @@
 import actions from "./actions";
 
-const reducer = ({ state, action }) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case actions.SET_USERNAME:
       return { ...state, username: action.payload };
